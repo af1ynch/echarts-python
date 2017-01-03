@@ -90,10 +90,10 @@ class Echart(Base):
         json.update(self.kwargs)
         return json
 
-    def _html(self):
+    def _html(self, src):
         with open(os.path.join(os.path.dirname(__file__), 'plot.j2')) as f:
             template = f.read()
-            return template.replace('{{ opt }}', json.dumps(self.json, indent=4))
+            return template.replace('{{ opt }}', json.dumps(self.json, indent=4)).replace("{{ script }}", src)
 
     def plot(self, persist=True):
         """
