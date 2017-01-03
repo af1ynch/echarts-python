@@ -89,7 +89,8 @@ class Echart(Base):
 
         json.update(self.kwargs)
         return json
-
+    
+    @staticmethod
     def _html(self, src):
         with open(os.path.join(os.path.dirname(__file__), 'plot.j2')) as f:
             template = f.read()
